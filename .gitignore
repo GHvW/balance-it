@@ -5,6 +5,7 @@ repl-temp-*
 
 # elm-output
 elm.js
+index.js
 
 # other
 .vs
