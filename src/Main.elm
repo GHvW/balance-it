@@ -2,7 +2,7 @@ module Main exposing (main)
 
 import Browser
 import Html exposing (Html, button, div, h1, table, tbody, td, text, thead, tr)
-import Html.Attributes exposing (datetime)
+import Html.Attributes exposing (class, datetime)
 import Html.Events exposing (onClick)
 import Time exposing (toDay, utc)
 
@@ -12,18 +12,18 @@ type alias Check =
 
 
 type alias Model =
-    List Check
+    { checks : List Check, total : Float }
 
 
 type Msg
     = AddCheck Check
 
 
-update : Msg -> List Check -> List Check
+update : Msg -> Model -> Model
 update msg model =
     case msg of
         AddCheck check ->
-            check :: model
+            { model | checks = check :: model.checks }
 
 
 checkRow : Check -> Html Msg
@@ -39,9 +39,9 @@ checkRow check =
 view : Model -> Html Msg
 view model =
     div []
-        [ h1 [] [ text "Balance It! (Your checkbook ...)" ]
-        , div []
-            [ table []
+        [ h1 [ class "has-text-centered", class "is-size-1" ] [ text "Balance It! (Your checkbook ...)" ]
+        , div [ class "columns", class "is-centered"]
+            [ table [ class "table" ]
                 [ thead []
                     [ tr []
                         [ td [] [ text "Check Number" ]
@@ -50,7 +50,7 @@ view model =
                         , td [] [ text "Date" ]
                         ]
                     ]
-                , tbody [] (List.map checkRow model)
+                , tbody [] (List.map checkRow model.checks)
                 ]
             ]
         , button [] [ text "+" ]
@@ -59,4 +59,12 @@ view model =
 
 main : Program () Model Msg
 main =
-    Browser.sandbox { init = [ { amount = 22.3, checkNumber = 3, date = Time.millisToPosix 100, payTo = "Me!" } ], update = update, view = view }
+    Browser.sandbox 
+        { init = { 
+            total = 5000.00,
+            checks = [ { amount = 22.3, checkNumber = 3, date = Time.millisToPosix 100, payTo = "Me!" },
+            { amount = 44.6, checkNumber = 4, date = Time.millisToPosix 100, payTo = "You!" } ] 
+          }, 
+          update = update, 
+          view = view 
+        }

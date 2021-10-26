@@ -3,6 +3,9 @@ elm-stuff
 # elm-repl generated files
 repl-temp-*
 
+# elm-output
+elm.js
+
 # other
 .vs
 .vscode
