@@ -2,8 +2,8 @@ module Main exposing (main)
 
 import Array exposing (empty)
 import Browser
-import Html exposing (Html, button, div, h1, table, tbody, td, text, thead, tr)
-import Html.Attributes exposing (class, datetime)
+import Html exposing (Html, button, div, h1, input, table, tbody, td, text, thead, tr)
+import Html.Attributes exposing (class, datetime, placeholder, type_)
 import Html.Events exposing (onClick)
 import Time exposing (toDay, utc)
 
@@ -81,6 +81,11 @@ block =
     div [ class "block" ]
 
 
+column : List (Html Msg) -> Html Msg
+column =
+    div [ class "column" ]
+
+
 view : Model -> Html Msg
 view model =
     div []
@@ -92,6 +97,14 @@ view model =
             ]
         , block
             [ div [ class "columns", class "is-centered" ]
+                -- turn into list
+                [ column [ input [ class "input", placeholder "Check Number", type_ "number" ] [] ]
+                , column [ input [ class "input", placeholder "Amount", type_ "number" ] [] ]
+                , column [ input [ class "input", placeholder "Pay To", type_ "text" ] [] ]
+                , column [ input [ class "input", placeholder "Date", type_ "date" ] [] ]
+                , column [ button [ class "button", class "is-primary" ] [ text "+" ] ]
+                ]
+            , div [ class "columns", class "is-centered" ]
                 [ table [ class "table" ]
                     [ thead []
                         [ tr []
@@ -110,7 +123,6 @@ view model =
                     ]
                 ]
             ]
-        , button [] [ text "+" ]
         ]
 
 
