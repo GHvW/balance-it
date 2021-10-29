@@ -306,7 +306,7 @@ addCheck =
 view : Model -> Html Msg
 view model =
     div []
-        [ section [] [ block [ h1 [ class "has-text-centered", class "is-size-1" ] [ text "Balance It! (Your checkbook ...)" ] ] ]
+        [ section [] [ block [ h1 [ class "has-text-centered", class "is-size-1" ] [ text "Balance It!!!! (Your checkbook ...)" ] ] ]
         , section [ class "container" ]
             [ block
                 [ div [ class "columns", class "is-centered" ]

@@ -1,0 +1,20 @@
+{
+  "name": "balance-it",
+  "version": "1.0.0",
+  "description": "balance your check book that you totally still have and use",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "elm-live src/Main.elm --start-page=index.html --hot --open -- --output=index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GHvW/balance-it.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GHvW/balance-it/issues"
+  },
+  "homepage": "https://github.com/GHvW/balance-it#readme"
+}
