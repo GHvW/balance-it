@@ -1,6 +1,7 @@
 # balance-it
 balance your check book that you totally still have and use
 
+**WIP** - balance-it is a work in progress app. Created to play with Elm and mess around with new ideas
 
 ## Development
 I'm using [elm-live](https://github.com/wking-io/elm-live) for development
